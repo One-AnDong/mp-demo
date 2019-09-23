@@ -1,0 +1,44 @@
+<!--pages/category/category.wxml-->
+<view class="category">
+  <view>
+    <SearchInput/>
+  </view>
+  <view class="category__inner">
+    <scroll-view class="category__sider" scroll-y>
+      <view class="category__sider-item {{ current === index ? 'category__sider_active':''}}"
+            wx:for="{{ listData }}"
+            wx:key="*this"
+            data-index="{{ index }}"
+            bindtap="handleClick">
+        {{ item }}
+      </view>
+    </scroll-view>
+    <scroll-view class="category__main" scroll-y>
+      <view class="category__goods"
+            wx:for="{{ goodsData }}"
+            wx:for-index="firstIndex"
+            wx:for-item="first"
+            wx:key="cat_name">
+        <view class="category__goods-title">
+          {{ first.cat_name }}
+        </view>
+        <view class="category__goods-inner">
+          <navigator  class="catagory__goods-item"
+                      wx:for="{{ first.children }}"
+                      wx:for-index="secodeIndex"
+                      wx:for-item="secode"
+                      wx:key="cat_name"
+                      open-type="navigate"
+                      url="">
+            <image class="catagory__goods-img" src="{{ secode.cat_icon }}"  lazy-load="false" />
+            <text class="">
+              {{ secode.cat_name }}
+            </text>
+          </navigator>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+
+</view>

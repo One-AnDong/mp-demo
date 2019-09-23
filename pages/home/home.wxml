@@ -1,0 +1,45 @@
+<!-- S 首页 -->
+<view class="home">
+  <view class="home__search">
+    <SearchInput/>
+  </view>
+  <!-- /搜索模块 -->
+
+  <view>
+    <swiper class="home__swiper" indicator-dots indicator-color="rgba(0,0,0,.3)" autoplay
+      interval="5000"  circular>
+      <swiper-item wx:for="{{ bannerData }}" wx:key="goods_id">
+        <image class="home__swiper-image" src="{{ item.image_src }}"></image>
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- /轮播图模块 -->
+
+  <view class="home__nav">
+    <navigator wx:for="{{ catitemsData }}" wx:key="name"  class="home__nav-item" url="{{ item.navigator_url }}">
+      <image src="{{ item.image_src }}" mode="widthFix"/>
+    </navigator>
+  </view>
+  <!-- /导航模块 -->
+
+  <view class="home__goods">
+    <view class="home__goods-item" wx:for="{{floorData}}"  >
+      <view class="home__goods-title">
+        <image  class="home__goods-img" src="{{ item.floor_title.image_src }}" />
+      </view>
+      <!-- /标题栏 -->
+      
+      <view class="home__goods-main">
+        <navigator class="home__goods-box" url="" open-type="navigate" wx:for="{{ item.product_list }}" wx:for-item="good"  wx:key="name">
+          <image  class="home__goods-img" src="{{ good.image_src }}" />
+        </navigator>
+      </view>
+      <!-- /商品  -->
+
+    </view>
+  </view>
+<!-- /商品列表模块 -->
+
+</view>
+<!-- E 首页 -->
+
